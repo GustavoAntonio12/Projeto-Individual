@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="assets/img/start.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap" rel="stylesheet">
+    <title>Home</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h4>Steven Universe</h4>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="gráficos.html"></a><a>Minha Área</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="section1">
+            <h1>But I want you to know you could know me</h1>
+        </div>
+
+
+
+        <div class="section4">
+
+            <div class="parteC">
+                <div class="form">
+                    <h2>Posso Te Mostrar Como Ser Forte De Verdade</h2>
+                    <h3>Cadsatro</h3>
+
+                    <p>Nome</p>
+                    <input placeholder="Nome" id="nome"" type=" text">
+                    <p>E-mail</p>
+                    <input placeholder="exemplo@gmail.com" id="email" type="email">
+                    <p>Telefone</p>
+                    <input placeholder="(11) 92056-5620" id="telefone" type="text">
+                    <p>Senha</p>
+                    <input placeholder="********" id="senha" type="password">
+                    <p>Confirmar Senha</p>
+                    <input placeholder="********" id="confirmaSenha" type="password">
+                    <button type="submit" onclick="cadastrar()" class="button">Cadastar</button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <ul class="footer">
+            <li><a>Home</a></li>
+            <li><a>Quiz</a></li>
+            <li><a>Login</a></li>
+            <li><a>Gráficos</a></li>
+            <li><a>Sobre</a></li>
+        </ul>
+
+    </footer>
+
+
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+
+        var nomeVar = nome.value;
+        var emailVar = email.value;
+        var telefoneVar = telefone.value;
+        var senhaVar = senha.value;
+        var confirmacaoSenhaVar = confirmaSenha.value;
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "") {
+            Swal.fire({
+                title: 'Erro Ao Tentar Cadastrar',
+                text: 'Todos os campos devem ser preenchidos',
+                icon: 'error',
+                timer: 2000,
+                timerProgressBar: true,
+                confirmButtonText: 'Fechar'
+            });
+            return false;
+        }
+        else{
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                telefoneServer: telefoneVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                Swal.fire({
+                title: 'Sucesso',
+                text: 'Cadastro Realizado Com Sucesso',
+                icon: 'success',
+                timer: 2000,
+                timerProgressBar: true,
+                confirmButtonText: 'Fechar'
+            });
+            return false;
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+}
+
+
+</script>
