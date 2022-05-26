@@ -27,9 +27,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="login.html"  >Login</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="gráficos.html"></a><a>Minha Área</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>
 
             </ul>
             <div class="burger">
@@ -58,6 +58,7 @@
                     <input placeholder="exemplo@gmail.com" id="email" type="email">
                     <p>Senha</p>
                     <input placeholder="********" id="senha" type="password">
+                    <p>Não tem Conta <a href="cadastro.html" > Cadastre-se </a></p>
                     <button type="submit" onclick="entrar()" class="button">Entrar</button>
 
                 </div>
@@ -73,7 +74,7 @@
             <li><a>Home</a></li>
             <li><a>Quiz</a></li>
             <li><a>Login</a></li>
-            <li><a>Gráficos</a></li>
+            <li><a>usuario</a></li>
             <li><a>Sobre</a></li>
         </ul>
         <h4>Desenvolvido Por Gustavo Antonio©℗®™</h4>
@@ -141,9 +142,15 @@
                     });
 
                 } else {
-
-                    console.log("Houve um erro ao tentar realizar o login!");
-
+                    Swal.fire({
+                        title: 'Erro ao tentar realizar o login!',
+                        text: 'Entre em contato com nossa central de atendimentos se o problema persistir',
+                        icon: 'error',
+                        timer: 2000,
+                        timerProgressBar: true,
+                        confirmButtonText: 'Fechar'
+                    });
+                    return false;
                     resposta.text().then(texto => {
                         console.error(texto);
                         finalizarAguardar(texto);

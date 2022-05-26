@@ -29,8 +29,14 @@ nav {
     min-height: 10vh;
     background-color: var(--fieryRose)
 }
-
-
+.nav-links a:hover{
+    color: var(--aquamarine);
+    font-size: 18px;
+    transition: 0.5s;
+}
+.ativo{
+    color: var(--lemonYellow);
+}
 .logo {
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -44,9 +50,11 @@ nav {
     justify-content: space-evenly;
     width: 40%;
 }
-
-.nav-links a {
+li a{
     color: white;
+}
+.nav-links a {
+  
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
@@ -211,7 +219,7 @@ h1 {
     background-attachment: fixed;
     background-size: cover;
     width: 100%;
-    height: 60vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,8 +252,6 @@ h1 {
 .boxes{
    display: flex;
    justify-content: space-evenly;
-
- 
 }
 .boxes .box{
     box-sizing: border-box;
@@ -274,7 +280,7 @@ h1 {
 
 .perfil{
     margin: 50px;
-    padding: 50px;
+    padding: 12.5px;
     box-sizing: border-box;
     border: #FB5B68 solid 2px;
     display: flex;
@@ -288,6 +294,10 @@ hr{
     background-color: #FB5B68;
     height: 2px;
     width: 100%;
+}
+.form p a {
+    text-decoration: none;
+    margin-left: 5px;
 }
 .texto{
     margin: 50px;
@@ -306,9 +316,6 @@ hr{
     box-sizing: border-box;
     padding: 10px;
     display: flex;
-    justify-content: center;
-    width: 100%;
-
 }
 footer{
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/fundo2.jpg');
