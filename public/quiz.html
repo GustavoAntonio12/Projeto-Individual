@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
+    <script src="assets/js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,20 +17,18 @@
     <title>Home</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <header>
         <nav>
             <div class="logo">
                 <h4>Steven Universe</h4>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="quiz.html"  class="ativo">Quiz</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="quiz.html" class="ativo">Quiz</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="usuario.html" >Minha Área</a></li>
-
+                <li><a href="usuario.html">Minha Área</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -40,7 +39,7 @@
     </header>
 
     <main>
-    
+
 
         <div class="section3">
             <h2>Escolha o Quiz Que Você Deseja Fazer</h2>
@@ -48,17 +47,23 @@
                 <div class="box">
                     <h2>Força</h2>
                     <img src="assets/img/garnet.png">
-                    <p>As chances são poucas, não será fácil, mas unidas iremos estar! A verdadeira força é lutar por aquilo que se acredita independentemente do pensamento alheio, acender uma chama no proxímo, é assim que se é forte, de verdade</p>
+                    <p>As chances são poucas, não será fácil, mas unidas iremos estar! A verdadeira força é lutar por
+                        aquilo que se acredita independentemente do pensamento alheio, acender uma chama no proxímo, é
+                        assim que se é forte, de verdade</p>
                 </div>
                 <div class="box">
                     <h2>Esperança</h2>
                     <img src="assets/img/lapis.png">
-                    <p>Ter esperançara não é sobre esperar um milagre, mas sim lutar para ele acontecer. Por isso que mesmo parecendo um impossível, uma Crystam Gem continua lutando. Afinal, Que teria mais valor Do que paz na Terra e muito amor?</p>
+                    <p>Ter esperançara não é sobre esperar um milagre, mas sim lutar para ele acontecer. Por isso que
+                        mesmo parecendo um impossível, uma Crystam Gem continua lutando. Afinal, Que teria mais valor Do
+                        que paz na Terra e muito amor?</p>
                 </div>
                 <div class="box">
                     <h2>Amor</h2>
                     <img src="assets/img/ruby.png">
-                    <p>Quando você ama a si mesmo, você nunca vai estar sozinho, não importa o que aconteça, pois, ninguém pode deter um sentimento estável, e toda Crystal Gems é feita de amor, e isto é mais forte que qualquer coisa
+                    <p>Quando você ama a si mesmo, você nunca vai estar sozinho, não importa o que aconteça, pois,
+                        ninguém pode deter um sentimento estável, e toda Crystal Gems é feita de amor, e isto é mais
+                        forte que qualquer coisa
                     </p>
                 </div>
             </div>
@@ -66,23 +71,30 @@
                 <div class="box">
                     <h2>Força</h2>
                     <img src="assets/img/garnet.png">
-                    <p>As chances são poucas, não será fácil, mas unidas iremos estar! A verdadeira força é lutar por aquilo que se acredita independentemente do pensamento alheio, acender uma chama no proxímo, é assim que se é forte, de verdade</p>
+                    <p>As chances são poucas, não será fácil, mas unidas iremos estar! A verdadeira força é lutar por
+                        aquilo que se acredita independentemente do pensamento alheio, acender uma chama no proxímo, é
+                        assim que se é forte, de verdade</p>
                 </div>
                 <div class="box">
                     <h2>Esperança</h2>
                     <img src="assets/img/lapis.png">
-                    <p>Ter esperançara não é sobre esperar um milagre, mas sim lutar para ele acontecer. Por isso que mesmo parecendo um impossível, uma Crystam Gem continua lutando. Afinal, Que teria mais valor Do que paz na Terra e muito amor?</p>
+                    <p>Ter esperançara não é sobre esperar um milagre, mas sim lutar para ele acontecer. Por isso que
+                        mesmo parecendo um impossível, uma Crystam Gem continua lutando. Afinal, Que teria mais valor Do
+                        que paz na Terra e muito amor?</p>
                 </div>
                 <div class="box">
                     <h2>Amor</h2>
                     <img src="assets/img/ruby.png">
-                    <p>Quando você ama a si mesmo, você nunca vai estar sozinho, não importa o que aconteça, pois, ninguém pode deter um sentimento estável, e toda Crystal Gems é feita de amor, e isto é mais forte que qualquer coisa
+                    <p>Quando você ama a si mesmo, você nunca vai estar sozinho, não importa o que aconteça, pois,
+                        ninguém pode deter um sentimento estável, e toda Crystal Gems é feita de amor, e isto é mais
+                        forte que qualquer coisa
                     </p>
                 </div>
+             
             </div>
         </div>
 
-        
+
     </main>
     <footer>
         <ul class="footer">
@@ -95,6 +107,17 @@
 
     </footer>
     <script src="assets/js/main.js"></script>
+    <script>
+         var session = obterDadosSession();
+        if (session) {
+        console.log("Deu Bom");
+        menu.innerHTML = ` <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="quiz.html" class="ativo">Quiz</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="postagens.html">Postagens</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>`;
+    }
+    </script>
 </body>
-
 </html>

@@ -19,16 +19,19 @@ function listar(req, res) {
         );
 }
 
+
+
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    
+
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
+        console.log(senha);
         senha = sha512(senha);
         usuarioModel.entrar(email, senha)
             .then(
@@ -66,13 +69,13 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    }  else if (telefone == undefined) {
+    } else if (telefone == undefined) {
         res.status(400).send("Seu telefone está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
         senha = sha512(senha);
-        
+
         usuarioModel.cadastrar(nome, telefone, email, senha)
             .then(
                 function (resultado) {
@@ -91,8 +94,52 @@ function cadastrar(req, res) {
     }
 }
 
+function atualizar(req, res) {
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var telefone = req.body.telefoneServer;
+    var senha = req.body.senhaServer;
+    var id = req.body.idServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (telefone == undefined) {
+        res.status(400).send("Seu telefone está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else {
+
+        if (senha == "") {
+            usuarioModel.atualizarSemSenha(nome, telefone, email, id)
+                .then(
+                    function (resultado) {
+                        usuarioModel.listarPorId(id).then(
+                            function (resultado) {
+                                res.json(resultado[0]);
+                            }
+                        )
+                    });
+        }
+        else {
+            senha = sha512(senha);
+            usuarioModel.atualizar(nome, telefone, email, senha, id)
+                .then(
+                    function (resultado) {
+                        usuarioModel.listarPorId(id).then(
+                            function (resultado) {
+                                res.json(resultado[0]);
+                            }
+                        )
+                    });
+        }
+    }
+}
+
 module.exports = {
     entrar,
     cadastrar,
-    listar
+    listar,
+    atualizar,
 }

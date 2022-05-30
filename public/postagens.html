@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <script src="assets/js/funcoes.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap"
@@ -17,7 +18,7 @@
     <title>Home</title>
 </head>
 
-<body onload="validarSessao(); listarPostagensUsuario(id)">
+<body onload="validarSessao(); listarPostagens();">
     <header>
         <nav>
             <div class="logo">
@@ -27,9 +28,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="postagens.html">Postagens</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="usuario.html" class="ativo">Minha Área</a></li>
+                <li><a href="cadastro.html" >Cadastro</a></li>
+                <li><a href="postagens.html" class="ativo">Postagens</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -40,74 +41,44 @@
     </header>
 
     <main>
-        <div class="section5">
-            <div class="conteudo">
-
-                <div>
-                    <h3>Nome: <span id="nome"></span> </h3>
-                    <h3>Email: <span id="email"></span> </h3>
-                    <h3>Telefone: <span id="telefone"></span> </h3>
-                </div>
-                <a href="atualizar.html"><button class="button">Atualizar</button></a>
-            </div>
-            <div class="lista">
-                <div class="indicadores">
-                    <i class="fa-solid fa-file-lines fa-my fa-xl"></i>
-                    <h3>Quantidade De Post's</h3>
-                    </h3>
-                    <span id="posts"></span>
-                </div>
-                <div class="indicadores">
-                    <i class="fa-solid fa-star fa-my fa-xl"></i>
-                    <h3> Post's Com Estrelas</h3>
-                    </h3>
-                    <span id="estrelas"></span>
-                </div>
-                <div class="indicadores">
-                    <i class="fa-solid fa-bookmark fa-my fa-xl"></i>
-                    <h3>Testes Realizados</h3>
-                    <span id="teste"></span>
-                </div>
-            </div>
-            <div class="post2" id="post">
-                <h2>Seus Post's</h2>
-            </div>
-            <div class="sair">
-                <a onclick="sair();"><button class="button">Sair</button></a>
-            </div>
+        <div class="section1">
+            <h1>But I want you to know you could know me</h1>
         </div>
 
 
+        <div class="section5">
+            <div class="sair">
+                <a href="postagensCadastro.html"><button class="button">Publicar</button></a>
+            </div>
+            <div class="post" id="post">
+
+
+            </div>
+        </div>
     </main>
     <footer>
         <ul class="footer">
             <li><a>Home</a></li>
             <li><a>Quiz</a></li>
             <li><a>Login</a></li>
-            <li><a>Usuario</a></li>
+            <li><a>usuario</a></li>
             <li><a>Sobre</a></li>
         </ul>
 
     </footer>
     <script src="assets/js/main.js"></script>
+
 </body>
 <script>
     var session = obterDadosSession();
-    id = session.idUsuario;
-    nome.innerHTML = session.nomeUsuario;
-    email.innerHTML = session.emailUsuario;
-    telefone.innerHTML = session.telefoneUsuario
-    estrelas.innerHTML = "2";
-    teste.innerHTML = "3";
 
+    function listarPostagens() {
 
-    function listarPostagensUsuario(idUsuario) {
-
-        fetch(`/postagens/listarPostagensUsuario/${id}`, {
+        fetch("/postagens/listarPostagens", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
         }).then(function (resposta) {
             console.log('Resposta: ', resposta);
 
@@ -115,7 +86,6 @@
                 resposta.json().then(json => {
                     console.log(json);
                     postagens = json;
-                    posts.innerHTML=postagens.length;
                     if (postagens.length > 0) {
                         for (let index = 0; index < postagens.length; index++) {
                             var postagem = postagens[index];
@@ -129,15 +99,12 @@
     }
     function renderizarPostagem(json) {
         post.innerHTML += `
-<div class="posts" id=${json.idPostagens}>
-    <h3>${json.tituloPostagens}</h3>
-    <p>${json.textoPostagens}</p>
-    <small>Por: ${json.nomeUsuario}</small>
-</div>`;
+            <div class="posts" id=${json.idPostagens}>
+                <h3>${json.tituloPostagens}</h3>
+                <p>${json.textoPostagens}</p>
+                <small>Por: ${json.nomeUsuario}</small>
+            </div>`;
     }
-
-
-
 </script>
 
 </html>

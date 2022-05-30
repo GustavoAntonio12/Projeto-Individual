@@ -4,21 +4,15 @@ function signOut() {
     sessionStorage.clear();
     window.location.replace('../../sign-in.html');
   }
-
+  function obterDadosSession(){
+    var json = JSON.parse(sessionStorage.USUARIO);
+    return json;
+  }
 function validarSessao() {
-    // aguardar();
-
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
 
-    var b_usuario = document.getElementById("b_usuario");
-
-    if (email != null && nome != null) {
-        // window.alert(`Seja bem-vindo, ${nome}!`);
-        b_usuario.innerHTML = nome;
-
-        // finalizarAguardar();
-    } else {
+    if (email == null && nome == null) {
         window.location = "../login.html";
     }
 }

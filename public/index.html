@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="assets/js/funcoes.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap"
         rel="stylesheet">
@@ -22,14 +23,11 @@
             <div class="logo">
                 <h4>Steven Universe</h4>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="menu">
                 <li><a href="index.html" class="ativo">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="usuario.html"></a><a>Minha Área</a></li>
-
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -45,7 +43,7 @@
         </div>
 
         <div class="section3">
-            <h2>Por Que Ser Uma Crystal Gems ?</h2>
+            <h2>Por que ser uma Crystal Gems ?</h2>
             <div class="boxes">
                 <div class="box">
                     <h2>Força</h2>
@@ -70,7 +68,7 @@
         <div class="section2">
       
             <div class="parteA">
-                <h2>Eu Posso ser uma Crystal Gems ?</h2>
+                <h2>Eu posso ser uma Crystal Gems ?</h2>
                 <p>
                    <i><b>Lute pela vida no Planeta Terra,<br>
                     Defenda todos os seres humanos, até aqueles que você não compreenda,<br>
@@ -82,7 +80,7 @@
         <div class="section4">
       
             <div class="parteA">
-                <h2>E Como Eu Sei Quem Sou ?</h2>
+                <h2>Como eu sei quem sou ?</h2>
                 <p><i><b>O primeiro passo é deixar todos serem que são, talvez assim, você possa se permitir ser quem você realmente é</b></i><br><br> Muitas pessoas acreditam não se conhecer, e isto não é um problema, neste site você pode fazer testes e receber dicas para se auto conhecer, tudo isso em conjunto com <i>Steven Universe.</i> Tenha a experiência de se auto descobrir enquanto entra em contato com a comunidade de umas das melhores obras artísticas de todos os tempos.</p>
                    
             </div>
@@ -103,3 +101,16 @@
 </body>
 
 </html>
+
+<script>
+        var session = obterDadosSession();
+    if(session){
+        console.log("Deu Bom");
+        menu.innerHTML=` <li><a href="index.html" class="ativo">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li> 
+                <li><a href="postagens.html">Postagens</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>`;   
+    }
+</script>

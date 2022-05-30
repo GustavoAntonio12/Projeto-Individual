@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
+    <script src="assets/js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -23,14 +24,11 @@
             <div class="logo">
                 <h4>Steven Universe</h4>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html"  class="ativo">Sobre</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="sobre.html" class="ativo">Sobre</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="usuario.html">Minha Área</a></li>
-
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -43,7 +41,7 @@
 
     <main>
 
-    
+
 
         <div class="section5">
             <div class="perfil">
@@ -54,25 +52,16 @@
                 <div class="texto">
                     <h2>Olá, Sou Gustavo Antonio</h2>
                     <hr>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                        but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                        popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of
-                        Lorem Ipsum.</p>
+                    <p>Tenho 18 anos e sou um verdadeiro idealistas procurando o melhor mesmo nas piores pessoas e eventos, tenho um pensamento semelhante com os gregos e romanos da antiguidade (claro que não tenho a genialidade deles, ainda...), pois, vejo uma ligação inseparável  no que se classifica como "exatas" e "humanas".  Consumo, e por vezes, tento criar, todas as categorias de arte, da primeira até a decima primeira. Tenho uma paixão eminente por tudo aquilo que tenha como base a razão e emoção de uma pessoa. Sinto um amor pela humanidade e todas suas criações, é tudo muito lindo quando se olha no contexto geral. É tudo mundo lindo quando</p>
                 </div>
             </div>
             <div class="texto">
                 <h2>Por Que Este Projeto ?</h2>
                 <hr>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including versions of
-                    Lorem Ipsum.</p>
+                <p>De maneira geral, eu sempre fui apaixonado por desenhos, muitos deles, eu sempre vi uma grandiosidade que muitas pessoas acabam menosprezando (por julgarem que a mídia animação está restrita para o mundo infantil). Diversos desenhos como Bojack Horseman, Charlie Brown, Mission Hill entre outros, foram responsáveis por ajudarem a construir meu caráter, me ajudaram a  compreender muito sobre muita coisa. Entretanto, Steven Universe foi o que mais me marcou. Steven Universe foi uma obra que entrou na minha vida quando eu estava em um declino emocional relativamente grande, e este desenho foi responsável por ajudar a compreender meus valores, a me autoconhecer, aceitar quem os outros são e principalmente quem eu sou, foi ele que me fez deixar de pensar como um pessimista do final do século XIX e começar a pensar como um otimista (o que eu sempre fui e nunca me dei conta).
+<br><br>
+                    O ser humano assim que nasce é lançamento em um mundo sem sentindo racional, é muito fácil acreditar que angústia e trsteza é um sentimento inerente de qualquer pessoa, entretanto, se nós olharmos o quadro novamente, veremos que a nossa sociedade é coisa mais linda que existe, somos sim, afetados por diversas coisas negativas, mas nada impede que lutemos juntos pelo mesmo objetivo, no mais baixo nível de todo ser humano, todos só querem paz e amor, se deixamos a arrogância e medo de lado e permitir ser quem somos, podemos amanhecer em um lugar melhor.<br><br><b>Você pode dizer que sou um sonhador<br>Mas eu não sou o único<br>Eu espero que algum dia você se junte a nós <br>E   o mundo viverá como um só.</b>
+                </p>
             </div>
 
         </div>
@@ -95,5 +84,14 @@
 </html>
 
 <script>
-
+    var session = obterDadosSession();
+    if (session) {
+        console.log("Deu Bom");
+        menu.innerHTML = ` <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html" class="ativo">Sobre</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="postagens.html">Postagens</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>`;
+    }
 </script>

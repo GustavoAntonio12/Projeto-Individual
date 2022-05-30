@@ -44,17 +44,102 @@ nav {
     font-size: 20px;
 }
 
+.conteudo{
+    box-sizing: border-box;
+    border: #FFBDB0 2px solid;
+    margin: 50px;
+    padding: 50px;
+}
+.indicadores{
+    border: #FFBDB0 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px 25px 25px 50px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.indicadores span{
+    margin-top: 10px;
+}
+.fa-star.fa-my{
+    box-sizing: border-box;
+    color: #FFEB48;
+    margin: 20px;
+}
+.fa-file-lines.fa-my{
+    box-sizing: border-box;
+    color: #53D2CE;
+    margin: 20px;
+}
+.fa-bookmark.fa-my{
+    box-sizing: border-box;
+    color: #FB5B68;
+    margin: 20px;
+}
+.lista{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
     width: 40%;
 }
+.section5 a{
+    box-sizing: border-box;
+    color: white;
+    text-decoration: none;
+    
+}
+.textoArea{
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 15px;
+    margin-bottom: 10px;
+}
+.posts h3{
+    margin-bottom:5px;
+}
+.posts{
+
+    box-sizing: border-box;
+    border: #75FBE2 3px solid;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin:20px 20px 20px 20px;
+    padding: 50px;
+}
+.post  small,.post2 small{
+    margin-top:10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.post{
+    box-sizing: border-box;
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.post2{
+    box-sizing: border-box;
+    margin: 50px;
+
+}
+.sair{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 li a{
     color: white;
 }
 .nav-links a {
-  
+    transition: 0.5s;
     text-decoration: none;
     letter-spacing: 3px;
     font-weight: bold;
@@ -78,9 +163,16 @@ li a{
     body{
         overflow-x: hidden;
     }
+    .post{
+        width: 100%;
+}
     .boxes{
         flex-wrap: wrap;
     }
+.conteudo{
+    margin:50px 0px 10px 0px;
+}
+
 
     .nav-links{
         position:absolute;
@@ -204,12 +296,19 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #53D2CE;
+    background-color: var(--cherryBlossomPink);
+    border:#FA74BF;
     color: white;
-    width: 30%;
+  padding: 20px;
     height: 40px;
     border-radius: 20px;
+    transition: 0.5s;
     cursor: pointer;
+}
+
+.button:hover{
+    font-size: 24px;
+    transition: 0.5s;
 }
 
 .section2{
