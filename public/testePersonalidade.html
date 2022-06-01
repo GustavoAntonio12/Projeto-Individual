@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <script src="assets/js/funcoes.js"></script>
+    <script src="assets/js/perguntas.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +18,7 @@
     <title>Home</title>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(); carregarPerguntas();">
     <header>
         <nav>
             <div class="logo">
@@ -27,7 +28,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html" class="ativo">Quiz</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="postagens.html">Postagens</a></li>
                 <li><a href="usuario.html">Minha Área</a></li>
             </ul>
             <div class="burger">
@@ -44,16 +45,9 @@
         <div class="section3">
             <h2>Quiz Personalidade</h2>
             <div class="boxes2">
-                <div class="box">
+                <div class="box" id="box">
 
-                    <h2>Qual sua maior dificuldade ...</h2>
-                    <div >
-                        <p class="opcoes">Opção 1</p>
-                        <p class="opcoes">Opção 1</p>
-                        <p class="opcoes">Opção 1</p>
-                        <p class="opcoes">Opção 1</p>
-                    </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -70,15 +64,42 @@
     </footer>
     <script src="assets/js/main.js"></script>
     <script>
-        var session = obterDadosSession();
-        if (session) {
-            console.log("Deu Bom");
-            menu.innerHTML = ` <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="quiz.html" class="ativo">Quiz</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
-                <li><a href="postagens.html">Postagens</a></li>
-                <li><a href="usuario.html">Minha Área</a></li>`;
+        var index = 0;
+        var resultado = 0;
+        function carregarPerguntas() {
+            if (index < perguntas.length) {
+                renderizar(index);
+
+                index++;
+            }
+            else {
+                renderizarResultado();
+            }
+        }
+
+        function renderizar(index) {
+            box.innerHTML = `
+            <h2>${perguntas[index].pergunta}</h2>
+            <div>
+                        <p class="opcoes" id="1" onclick="proxima('1');">${perguntas[index].resposta1}</p>
+                        <p class="opcoes" id="2" onclick="proxima('2');">${perguntas[index].resposta2}</p>
+                        <p class="opcoes" id="3" onclick="proxima('3');">${perguntas[index].resposta3}</p>
+                        <p class="opcoes" id="4" onclick="proxima('4');">${perguntas[index].resposta4}</p>
+                    </div>`;
+        }
+        function proxima(escolha) {
+            resultado += parseInt(escolha);
+            alert(resultado);
+            carregarPerguntas();
+        }
+
+        function renderizarResultado() {
+            box.innerHTML = `
+            <h2>Acertou ${resultado}</h2>
+            <div class="divRes">
+                <img src="assets/img/a6361d7827f4ef58ae749ec0940adf91.png">
+                       <h2>Loremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvd</h2>
+                    </div>`;
         }
     </script>
 </body>

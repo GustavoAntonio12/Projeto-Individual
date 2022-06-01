@@ -9,7 +9,9 @@
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="assets/js/validacoes.js"></script>
     <script src="assets/js/funcoes.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap"
@@ -28,7 +30,6 @@
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="postagens.html">Postagens</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
                 <li><a href="usuario.html" class="ativo">Minha Área</a></li>
             </ul>
             <div class="burger">
@@ -73,7 +74,7 @@
                 <h2>Seus Post's</h2>
             </div>
             <div class="sair">
-                <a onclick="sair();"><button class="button">Sair</button></a>
+                <a onclick="limparSessao();"><button class="button">Sair</button></a>
             </div>
         </div>
 
@@ -99,6 +100,7 @@
     telefone.innerHTML = session.telefoneUsuario
     estrelas.innerHTML = "2";
     teste.innerHTML = "3";
+    posts.innerHTML = 0;
 
 
     function listarPostagensUsuario(idUsuario) {
@@ -115,8 +117,9 @@
                 resposta.json().then(json => {
                     console.log(json);
                     postagens = json;
-                    posts.innerHTML=postagens.length;
+
                     if (postagens.length > 0) {
+                        posts.innerHTML = postagens.length;
                         for (let index = 0; index < postagens.length; index++) {
                             var postagem = postagens[index];
                             renderizarPostagem(postagem);
@@ -133,9 +136,48 @@
     <h3>${json.tituloPostagens}</h3>
     <p>${json.textoPostagens}</p>
     <small>Por: ${json.nomeUsuario}</small>
+    <i class="fa-solid fa-pen fa-my " onclick="alterar(${json.idPostagens});"></i>
+    <i class="fa-solid fa-trash fa-my" onclick="deletar(${json.idPostagens});"></i>
 </div>`;
     }
 
+    function deletar(id) {
+        fetch(`/postagens/deletar/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                Swal.fire({
+                    title: 'Sucesso',
+                    text: 'Post Deletado Com Sucesso',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    confirmButtonText: 'Fechar',
+                    willClose: () => {
+                        window.location = "usuario.html";
+                    }
+                });
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o deletar!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+        return false;
+
+    }
+
+
+    function alterar() {
+        alert("alterar");
+    }
 
 
 </script>

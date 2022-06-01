@@ -12,7 +12,16 @@ function listarPostagens() {
 function listarPostagensUsuario(idUsuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarPostagensUsuarios()", idUsuario);
     var instrucao = `
-        SELECT * FROM postagens  INNER JOIN usuario ON idUsuario WHERE idUsuario = ${idUsuario};
+        SELECT * FROM postagens  INNER JOIN usuario ON idUsuario = fkUsuario WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function deletar(idPostagem) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar()", idPostagem);
+    var instrucao = `
+       DELETE FROM postagens WHERE idPostagens = ${idPostagem};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -30,6 +39,7 @@ function cadastrar(idUsuario,titulo,postagem) {
 
 module.exports = {
     listarPostagens,
+    deletar,
     cadastrar,
     listarPostagensUsuario
 }

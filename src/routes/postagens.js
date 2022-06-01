@@ -12,6 +12,11 @@ router.get("/listarPostagensUsuario/:idServer", function (req, res) {
     postagensController.listarPostagensUsuario(req, res);
 });
 
+router.get("/deletar/:idServer", function (req, res) {
+    postagensController.deletar(req, res);
+});
+
+
 router.post("/cadastrar", function (req, res) {
     postagensController.cadastrar(req, res);
 });

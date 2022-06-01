@@ -9,10 +9,13 @@
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="assets/js/validacoes.js"></script>
     <script src="assets/js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap"
+        rel="stylesheet">
     <title>Home</title>
 </head>
 
@@ -26,7 +29,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="login.html">Login</a></li>
-                <li><a href="cadastro.html"  class="ativo">Cadastro</a></li>
+                <li><a href="cadastro.html" class="ativo">Cadastro</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -61,7 +64,7 @@
                     <input placeholder="********" id="senha" type="password">
                     <p>Confirmar Senha</p>
                     <input placeholder="********" id="confirmaSenha" type="password">
-                    <p>Já possui conta, faça o<a href="login.html" >login</a></p>
+                    <p>Já possui conta, faça o<a href="login.html">login</a></p>
                     <button type="submit" onclick="cadastrar()" class="button">Cadastar</button>
 
                 </div>
@@ -90,15 +93,15 @@
 
 <script>
     var session = obterDadosSession();
-   if (session) {
-   console.log("Deu Bom");
-   menu.innerHTML = `  <li><a href="index.html">Home</a></li>
+    if (session) {
+        console.log("Deu Bom");
+        menu.innerHTML = `  <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="cadastro.html"  class="ativo">Cadastro</a></li>
                 <li><a href="postagens.html" >Postagens</a></li>
                 <li><a href="usuario.html">Minha Área</a></li>`;
-}
+    }
     function cadastrar() {
 
         var nomeVar = nome.value;
@@ -106,7 +109,7 @@
         var telefoneVar = telefone.value;
         var senhaVar = senha.value;
         var confirmacaoSenhaVar = confirmaSenha.value;
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "" ) {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "") {
             Swal.fire({
                 title: 'Erro Ao Tentar Cadastrar',
                 text: 'Todos os campos devem ser preenchidos',
@@ -117,7 +120,39 @@
             });
             return false;
         }
-        else{
+        if (!validarEmail(emailVar)) {
+            Swal.fire({
+                title: 'Email Incorreto',
+                text: 'Email não está informado corretamente',
+                icon: 'error',
+                confirmButtonText: 'Fechar'
+            });
+            return false;
+        }
+        if (senhaVar != "" || confirmacaoSenhaVar != "") {
+            if (senhaVar == confirmacaoSenhaVar) {
+                var confirma = validarSenha(senhaVar);
+
+                if (confirma != "OK") {
+                    Swal.fire({
+                        title: 'Senhas Com Problema',
+                        text: confirma,
+                        icon: 'error',
+                        confirmButtonText: 'Fechar'
+                    });
+                    return false;
+                }
+            }
+            else {
+                Swal.fire({
+                    title: 'Senhas Diferentes',
+                    text: 'As senhas devem ser iguais',
+                    icon: 'error',
+                    confirmButtonText: 'Fechar'
+                });
+                return false;
+            }
+        }
 
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -136,18 +171,17 @@
 
             if (resposta.ok) {
                 Swal.fire({
-                title: 'Sucesso',
-                text: 'Cadastro Realizado Com Sucesso',
-                icon: 'success',
-                timer: 2000,
-                timerProgressBar: true,
-                confirmButtonText: 'Fechar'
-            });
-            return false;
+                    title: 'Sucesso',
+                    text: 'Cadastro Realizado Com Sucesso',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    confirmButtonText: 'Fechar',
+                    willClose: () => {
+                        window.location = "login.html";
+                    }
+                });
 
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -157,6 +191,5 @@
 
         return false;
     }
-}
 
 </script>

@@ -28,7 +28,6 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="cadastro.html" >Cadastro</a></li>
                 <li><a href="postagens.html" class="ativo">Postagens</a></li>
                 <li><a href="usuario.html">Minha Área</a></li>
             </ul>
@@ -51,7 +50,7 @@
                 <a href="postagensCadastro.html"><button class="button">Publicar</button></a>
             </div>
             <div class="post" id="post">
-
+                
 
             </div>
         </div>
@@ -92,19 +91,33 @@
                             renderizarPostagem(postagem);
                         }
                     }
+                    else{
+                        post.innerHTML = "<h2>Sem postagens por enquanto...</h2>";
+                    }
                 });
 
             }
         });
     }
     function renderizarPostagem(json) {
+        if(json.idUsuario == session.idUsuario){
+            post.innerHTML += `
+            <div class="posts0" id=${json.idPostagens}>
+                <h3>${json.tituloPostagens}</h3>
+                <p>${json.textoPostagens}</p>
+                <small>Por: ${json.nomeUsuario}</small>
+            </div>`;
+        }
+        else{
         post.innerHTML += `
             <div class="posts" id=${json.idPostagens}>
                 <h3>${json.tituloPostagens}</h3>
                 <p>${json.textoPostagens}</p>
                 <small>Por: ${json.nomeUsuario}</small>
             </div>`;
+        }
     }
+
 </script>
 
 </html>

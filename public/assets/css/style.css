@@ -46,14 +46,16 @@ nav {
 
 .conteudo{
     box-sizing: border-box;
-    border: #FFBDB0 2px solid;
-    margin: 50px;
+    border: #FFBDB0 3px solid;
+    margin: 25px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     padding: 50px;
 }
 .indicadores{
-    border: #FFBDB0 2px solid;
+    border: #FFBDB0 3px solid;
     display: flex;
     justify-content: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     align-items: center;
     flex-direction: column;
     margin: 50px 25px 25px 50px;
@@ -63,10 +65,21 @@ nav {
 .indicadores span{
     margin-top: 10px;
 }
+.fa-trash.fa-my{
+    box-sizing: border-box;
+    color: #FB5B68;
+    cursor: pointer;
+}
 .fa-star.fa-my{
     box-sizing: border-box;
     color: #FFEB48;
     margin: 20px;
+}
+.fa-pen.fa-my{
+    box-sizing: border-box;
+    color: #FFEB48;
+    margin:10px;
+    cursor: pointer;
 }
 .fa-file-lines.fa-my{
     box-sizing: border-box;
@@ -105,10 +118,22 @@ nav {
 .posts h3{
     margin-bottom:5px;
 }
+.post h2{
+    text-align: center;
+   font-style: italic;
+}
 .posts{
 
     box-sizing: border-box;
     border: #75FBE2 3px solid;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin:20px 20px 20px 20px;
+    padding: 50px;
+}
+.posts0{
+    
+    box-sizing: border-box;
+    border: #FB5B68 3px solid;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin:20px 20px 20px 20px;
     padding: 50px;
@@ -371,6 +396,7 @@ h1 {
     padding: 15px;
 }
 .opcoes{
+    cursor: pointer;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -380,7 +406,10 @@ h1 {
     margin: 15px;
     padding: 15px;
 }
-
+.opcoes:hover{
+    border: var(--lemonYellow) solid 3px;
+    transition: 0.6s;
+}
 .boxes .box{
     box-sizing: border-box;
     display: flex;
@@ -416,6 +445,24 @@ h1 {
     background-size: cover;
     margin: 50px;
     padding: 50px;
+}
+.box .divRes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.box div img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    border: var(--babyPowder) solid 12px;
+    margin: 50px;
 }
 .quiz p{
     color: white;

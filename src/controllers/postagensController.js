@@ -20,8 +20,6 @@ function listarPostagens(req, res) {
 }
 function listarPostagensUsuario(req, res) {
     var id = req.params.idServer;
-    console.log("aQUI AOSDAS",id);
-
     postagensModel.listarPostagensUsuario(id)
         .then(function (resultado) {
             if (resultado.length > 0) {
@@ -38,6 +36,44 @@ function listarPostagensUsuario(req, res) {
             }
         );
 }
+function deletar(req, res) {
+    var id = req.params.idServer;
+    postagensModel.deletar(id)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+                res.send(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+// TODO: Fazer a feature de alterar o post (se dé tempo, mas vai da sim, numa boa)
+function alterar(req, res) {
+    var id = req.params.idServer;
+    postagensModel.deletar(id)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+                res.send(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 
 function cadastrar(req, res) {
     var id = req.body.idServer;
@@ -63,5 +99,7 @@ function cadastrar(req, res) {
 module.exports = {
     listarPostagens,
     listarPostagensUsuario,
-    cadastrar
+    cadastrar,
+    deletar,
+   // alterar
 }
