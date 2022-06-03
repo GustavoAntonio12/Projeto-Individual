@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <script src="assets/js/funcoes.js"></script>
     <script src="assets/js/perguntas.js"></script>
@@ -44,10 +46,84 @@
 
         <div class="section3">
             <h2>Quiz Personalidade</h2>
-            <div class="boxes2">
+            <div class="boxes3">
                 <div class="box" id="box">
-
-
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                </div>
+                <div class="box" id="box">
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                </div>
+                <div class="box" id="box">
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                </div>
+                <div class="box" id="box">
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                </div>
+                <div class="box" id="box">
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                </div>
+                <div class="box" id="box">
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
                 </div>
             </div>
         </div>
@@ -77,16 +153,7 @@
             }
         }
 
-        function renderizar(index) {
-            box.innerHTML = `
-            <h2>${perguntas[index].pergunta}</h2>
-            <div>
-                        <p class="opcoes" id="1" onclick="proxima('1');">${perguntas[index].resposta1}</p>
-                        <p class="opcoes" id="2" onclick="proxima('2');">${perguntas[index].resposta2}</p>
-                        <p class="opcoes" id="3" onclick="proxima('3');">${perguntas[index].resposta3}</p>
-                        <p class="opcoes" id="4" onclick="proxima('4');">${perguntas[index].resposta4}</p>
-                    </div>`;
-        }
+
         function proxima(escolha) {
             resultado += parseInt(escolha);
             alert(resultado);

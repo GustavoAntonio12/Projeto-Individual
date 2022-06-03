@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/validacoes.js"></script>
     <script src="assets/js/funcoes.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -69,6 +70,17 @@
                     <h3>Testes Realizados</h3>
                     <span id="teste"></span>
                 </div>
+            </div>
+
+            <div class="lista2">
+                <div class="chart-container tamanho">
+                    <canvas id="myChart1"></canvas>
+                </div>
+                <div class="chart-container tamanho">
+                    <canvas id="myChart2"></canvas>
+                </div>
+                
+                  
             </div>
             <div class="post2" id="post">
                 <h2>Seus Post's</h2>
@@ -182,4 +194,41 @@
 
 </script>
 
+<script>
+    const labels = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [0, 10, 5, 2, 20, 30, 45],
+      }]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+  </script>
+<script>
+    const myChart1 = new Chart(
+      document.getElementById('myChart1'),
+      config
+    );
+    const myChart2 = new Chart(
+      document.getElementById('myChart2'),
+      config
+    );
+  </script>
+    
 </html>
