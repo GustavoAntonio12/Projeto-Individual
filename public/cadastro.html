@@ -120,7 +120,8 @@
             });
             return false;
         }
-        if (!validarEmail(emailVar)) {
+        
+        if (validarEmail(emailVar) != 'OK') {
             Swal.fire({
                 title: 'Email Incorreto',
                 text: 'Email não está informado corretamente',
@@ -129,6 +130,17 @@
             });
             return false;
         }
+
+        if (validarTelefone(telefoneVar) != 'OK') {
+            Swal.fire({
+                title: 'Telefone Incorreto',
+                text: 'Telefone não está informado corretamente',
+                icon: 'error',
+                confirmButtonText: 'Fechar'
+            });
+            return false;
+        }
+
         if (senhaVar != "" || confirmacaoSenhaVar != "") {
             if (senhaVar == confirmacaoSenhaVar) {
                 var confirma = validarSenha(senhaVar);

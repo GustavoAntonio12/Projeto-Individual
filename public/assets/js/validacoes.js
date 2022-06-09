@@ -31,7 +31,7 @@ function validarEmail(email) {
   
     return resultado;
   }
-  
+
   function validarTelefone(telefone) {
     var resultado = 'OK';
   
@@ -39,7 +39,7 @@ function validarEmail(email) {
       resultado = 'Telefone está indefinido';
     } else if (telefone == '') {
       resultado = 'Telefone é obrigatório';
-    } else if (telefone.startsWith('9') == false || telefone.indexOf('-') != 5) {
+    } else if (telefone.indexOf('-') != 9) {
       resultado = 'Telefone em formate inválido';
     }
   
