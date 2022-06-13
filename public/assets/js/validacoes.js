@@ -45,6 +45,9 @@ function validarEmail(email) {
     else if (telefone.indexOf('-') != 10) {
       resultado = 'Telefone em formate inválido';
     }
+    else if (telefone.length != 15) {
+      resultado = 'Telefone em formate inválido';
+    }
   
     return resultado;
   }
