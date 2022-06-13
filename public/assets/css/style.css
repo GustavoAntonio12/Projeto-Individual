@@ -23,6 +23,10 @@
 
 }
 
+.selecionado{
+    background-color: #75FBE2;
+}
+
 nav {
     display: flex;
     justify-content: space-evenly;
@@ -157,7 +161,7 @@ nav {
 .posts {
 
     box-sizing: border-box;
-    border: #75FBE2 3px solid;
+    border: #FB5B68 3px solid;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin: 20px 20px 20px 20px;
     padding: 50px;
@@ -166,7 +170,7 @@ nav {
 .posts0 {
 
     box-sizing: border-box;
-    border: #FB5B68 3px solid;
+    border: #75FBE2 3px solid;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin: 20px 20px 20px 20px;
     padding: 50px;
@@ -239,6 +243,12 @@ li a {
 
     .boxes {
         flex-wrap: wrap;
+    }
+    .boxes2{
+width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 
     .conteudo {
@@ -423,6 +433,13 @@ h1 {
     text-align: center;
 
 }
+.section3 .texto2 p{
+    margin: 25px 100px 25px 100px;
+}
+
+.section3 h1{
+    color: black;
+}
 
 .section5 {
     box-sizing: border-box;
@@ -446,6 +463,7 @@ h1 {
 }
 
 .boxes2 {
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -462,6 +480,8 @@ h1 {
     padding: 15px;
 }
 .boxes3{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -557,6 +577,13 @@ h1 {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border: var(--babyPowder) solid 12px;
     margin: 50px;
+}
+.imgResultado{
+    width: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border: var(--babyPowder) solid 12px;
+    margin: 25px 0px 25px 0px;
 }
 
 .quiz p {

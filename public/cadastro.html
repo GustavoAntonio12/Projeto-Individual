@@ -120,21 +120,21 @@
             });
             return false;
         }
-        
+        var resultado1 = validarEmail(telefoneVar);
         if (validarEmail(emailVar) != 'OK') {
             Swal.fire({
                 title: 'Email Incorreto',
-                text: 'Email não está informado corretamente',
+                text: resultado1,
                 icon: 'error',
                 confirmButtonText: 'Fechar'
             });
             return false;
         }
-
+        var resultado2 = validarTelefone(telefoneVar);
         if (validarTelefone(telefoneVar) != 'OK') {
             Swal.fire({
                 title: 'Telefone Incorreto',
-                text: 'Telefone não está informado corretamente',
+                text: resultado2,
                 icon: 'error',
                 confirmButtonText: 'Fechar'
             });

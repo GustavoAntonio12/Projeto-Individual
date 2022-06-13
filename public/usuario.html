@@ -20,7 +20,7 @@
     <title>Home</title>
 </head>
 
-<body onload="validarSessao(); listarPostagensUsuario(id)">
+<body onload="iniciar(id)">
     <header>
         <nav>
             <div class="logo">
@@ -67,16 +67,19 @@
                 </div>
                 <div class="indicadores">
                     <i class="fa-solid fa-bookmark fa-my fa-xl"></i>
-                    <h3>Testes Realizados</h3>
-                    <span id="teste"></span>
+                    <h3>Persona Atual</h3>
+                    <span id="persona"></span>
+                    <span id="data"></span>
                 </div>
             </div>
 
             <div class="lista2">
                 <div class="chart-container tamanho">
+                    <h2>Quantidae de Post's Por Dia</h2>
                     <canvas id="myChart1"></canvas>
                 </div>
                 <div class="chart-container tamanho">
+                    <h2>Acertos Por Teste De Conhecimento</h2>
                     <canvas id="myChart2"></canvas>
                 </div>
                 
@@ -111,7 +114,7 @@
     email.innerHTML = session.emailUsuario;
     telefone.innerHTML = session.telefoneUsuario
     estrelas.innerHTML = "2";
-    teste.innerHTML = "3";
+    persona.innerHTML = "Sem Teste";
     posts.innerHTML = 0;
 
 
@@ -129,10 +132,11 @@
                 resposta.json().then(json => {
                     console.log(json);
                     postagens = json;
-
                     if (postagens.length > 0) {
+                        
                         posts.innerHTML = postagens.length;
                         for (let index = 0; index < postagens.length; index++) {
+                        
                             var postagem = postagens[index];
                             renderizarPostagem(postagem);
                         }
@@ -144,7 +148,7 @@
     }
     function renderizarPostagem(json) {
         post.innerHTML += `
-<div class="posts" id=${json.idPostagens}>
+<div class="posts0" id=${json.idPostagens}>
     <h3>${json.tituloPostagens}</h3>
     <p>${json.textoPostagens}</p>
     <small>Por: ${json.nomeUsuario}</small>
@@ -195,40 +199,159 @@
 </script>
 
 <script>
-    const labels = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-    ];
-  
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
-      }]
-    };
-  
-    const config = {
-      type: 'line',
-      data: data,
-      options: {}
-    };
-  </script>
-<script>
-    const myChart1 = new Chart(
-      document.getElementById('myChart1'),
-      config
-    );
-    const myChart2 = new Chart(
-      document.getElementById('myChart2'),
-      config
-    );
-  </script>
-    
+
+function listarQuantidadePostagensAgrupadoDia(idUsuario) {
+
+fetch(`/postagens/listarQuantidadePostagensAgrupadoDia/${id}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(function (resposta) {
+    console.log('Resposta: ', resposta);
+
+    if (resposta.ok) {
+        resposta.json().then(json => {
+            console.log(json);
+            postagens = json;
+            if (postagens.length > 0) {
+                plotarGrafico(postagens);
+            }
+        });
+
+    }
+});
+}
+
+function listarAcertosAgrupadoDia(idUsuario) {
+
+fetch(`/quiz/listarAcertosAgrupadoDia/${id}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(function (resposta) {
+    console.log('Resposta: ', resposta);
+
+    if (resposta.ok) {
+        resposta.json().then(json => {
+            console.log(json);
+            if (json.length > 0) {
+                plotarGrafico2(json);
+            }
+        });
+
+    }
+});
+}
+
+function personaTeste(idUsuario) {
+
+fetch(`/quiz/personaTeste/${id}`, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(function (resposta) {
+    console.log('Resposta: ', resposta);
+
+    if (resposta.ok) {
+        resposta.json().then(json => {
+
+            console.log(json);
+            if (json.length > 0) {
+               persona.innerHTML = json[0].persona;
+               data.innerHTML =  new Date(json[0].data).toLocaleDateString();
+            }
+        });
+
+    }
+});
+}
+
+
+function plotarGrafico(resposta) {
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+        
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: `Post's`,
+                data: [],
+                fill: false,
+                borderColor: '#75FBE2',
+                backgroundColor:  '#75FBE2',
+                tension: 0.1
+            }]
+        };
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(new Date(registro.data).toLocaleDateString());
+            dados.datasets[0].data.push(registro.quantidade);
+        }
+        
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart1 = new Chart(
+            document.getElementById('myChart1'),
+            config
+        );
+    }
+
+    function plotarGrafico2(resposta) {
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+        
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: `Acertos`,
+                data: [],
+                fill: false,
+                borderColor: '#FB5B68',
+                backgroundColor:  '#FB5B68',
+                tension: 0.1
+            }]
+        };
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(new Date(registro.data).toLocaleTimeString());
+            dados.datasets[0].data.push(registro.quantidade);
+        }
+        
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart1 = new Chart(
+            document.getElementById('myChart2'),
+            config
+        );
+    }
+
+    function iniciar(id){
+        validarSessao(); 
+        listarPostagensUsuario(id); 
+        listarAcertosAgrupadoDia(id); 
+        listarQuantidadePostagensAgrupadoDia(id); 
+        personaTeste(id);
+    }
+
+</script>
+
 </html>

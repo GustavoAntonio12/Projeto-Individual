@@ -39,7 +39,10 @@ function validarEmail(email) {
       resultado = 'Telefone está indefinido';
     } else if (telefone == '') {
       resultado = 'Telefone é obrigatório';
-    } else if (telefone.indexOf('-') != 9) {
+    } else if (telefone.indexOf('9') != 5) {
+      resultado = 'Telefone em formate inválido';
+    }
+    else if (telefone.indexOf('-') != 10) {
       resultado = 'Telefone em formate inválido';
     }
   

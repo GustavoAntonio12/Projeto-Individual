@@ -18,6 +18,19 @@ function listarPostagensUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
+
+function listarQuantidadePostagensAgrupadoDia(idUsuario) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarQuantidadePostagensAgrupadoDia()",);
+    var instrucao = `
+    SELECT COUNT(*) as 'quantidade',dataPostagens as 'data' FROM postagens WHERE fkUsuario = ${idUsuario}  GROUP BY DAY(dataPostagens);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+
+
 function deletar(idPostagem) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar()", idPostagem);
     var instrucao = `
@@ -41,5 +54,6 @@ module.exports = {
     listarPostagens,
     deletar,
     cadastrar,
-    listarPostagensUsuario
+    listarPostagensUsuario,
+    listarQuantidadePostagensAgrupadoDia
 }

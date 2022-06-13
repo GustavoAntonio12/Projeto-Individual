@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
     <script src="assets/js/funcoes.js"></script>
     <script src="assets/js/perguntas.js"></script>
@@ -20,7 +20,7 @@
     <title>Home</title>
 </head>
 
-<body onload="validarSessao(); carregarPerguntas();">
+<body onload="validarSessao();">
     <header>
         <nav>
             <div class="logo">
@@ -44,88 +44,29 @@
     <main>
 
 
-        <div class="section3">
+        <div class="section3" id="section3">
             <h2>Quiz Personalidade</h2>
-            <div class="boxes3">
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+            <div class="texto2">
+            <p>Por favor, selecione dez dos valores/comportamentos seguintes que melhor refletem quem você é, e não quem
+                você desejaria ser. Clique em uma palavra para adicionar ou remover a sua seleção.</p></div>
+            <div class="boxes3" id="boxes3">
+                <div class="box" id="box1">
+
                 </div>
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                <div class="box" id="box2">
+
                 </div>
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                <div class="box" id="box3">
+
                 </div>
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                <div class="box" id="box4">
+
                 </div>
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                </div>
-                <div class="box" id="box">
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
-                    <p class="opcoes" id="1" onclick="proxima('1');">Valor 1</p>
+                <div class="box" id="box5">
+
                 </div>
             </div>
+            <button class="button" onclick="terminar()">Terminar</button>
         </div>
     </main>
     <footer>
@@ -140,33 +81,175 @@
     </footer>
     <script src="assets/js/main.js"></script>
     <script>
-        var index = 0;
-        var resultado = 0;
-        function carregarPerguntas() {
-            if (index < perguntas.length) {
-                renderizar(index);
-
-                index++;
+        var idVar = sessionStorage.ID_USUARIO;
+        var total = 0;
+        var finala =[];
+        var resultadoVar = "";
+        var selecionadas = [];
+        for (let index = 0; index < valores.length; index++) {
+            renderizar(index);
+        }
+        function renderizar(index) {
+            if (index < 11) {
+                console.log(valores[index].id);
+                box1.innerHTML += `<p class="opcoes" id="${valores[index].id}" onclick="chama(${valores[index].id})">${valores[index].valor}</p>`;
+            }
+            else if (index < 22) {
+                box2.innerHTML += `<p class="opcoes" id="${valores[index].id}" onclick="chama(${valores[index].id})">${valores[index].valor}</p>`;
+            }
+            else if (index < 33) {
+                box3.innerHTML += `<p class="opcoes" id="${valores[index].id}" onclick="chama(${valores[index].id})">${valores[index].valor}</p>`;
+            }
+            else if (index < 44) {
+                box4.innerHTML += `<p class="opcoes" id="${valores[index].id}" onclick="chama(${valores[index].id})">${valores[index].valor}</p>`;
+            }
+            else if (index < 55) {
+                box5.innerHTML += `<p class="opcoes" id="${valores[index].id}" onclick="chama(${valores[index].id})">${valores[index].valor}</p>`;
+            }
+        }
+        function chama(index) {
+            const resultado = document.getElementById(index).classList.toggle("selecionado");
+            if (resultado) {
+                if (verificar() == "OK") {
+                    selecionadas.push(index);
+                    total++;
+                }
+                else {
+                    document.getElementById(index).classList.toggle("selecionado");
+                }
             }
             else {
-                renderizarResultado();
+                selecionadas.splice(selecionadas.indexOf(index), 1);
+                total--;
             }
         }
 
+        function verificar() {
 
-        function proxima(escolha) {
-            resultado += parseInt(escolha);
-            alert(resultado);
-            carregarPerguntas();
+            let retorno = "OK"
+            if (total >= 10) {
+                Swal.fire({
+                    title: 'Limite',
+                    text: 'Selecione apenas 10 opções',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return false;
+                retorno = "ERRO";
+            }
+            return retorno
         }
 
+        function terminar() {
+            if (total < 10) {
+                Swal.fire({
+                    title: 'Incompleto',
+                    text: 'Você precisa selecionar 10 opções',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return false;
+            }
+            else {
+                var ametista = 0, garnet = 0, steven = 0, greg = 0, perola = 0, jasper = 0;
+                for (let index = 0; index < selecionadas.length; index++) {
+                    let aux = selecionadas[index] - 1;
+                    let aux2 = valores[aux].persona
+
+                    if (aux2 == "Garnet") {
+                        garnet++;
+                    }
+                    else if (aux2 == "Steven") {
+                        steven++;
+                    }
+                    else if (aux2 == "Greg") {
+                        greg++;
+                    }
+                    else if (aux2 == "Ametista") {
+                        ametista++;
+                    }
+                    else if (aux2 == "Pérola") {
+                        perola++;
+                    }
+                    else if (aux2 == "Jasper") {
+                        jasper++;
+                    }
+
+                }
+                if (perola >= garnet && perola >= jasper && perola >= ametista && perola >= greg && perola >= steven) {
+                    resultadoVar = "Perola";
+                    texto = `Pérola é inteligente, perfeccionista, maníaca por limpeza e um pouco sentimental. Na maioria das vezes, ela é quem elabora os planos para Crystal Gems superando algumas situações. Dentre todas as Crystal Gems, Pérola é uma pessoa mais antiga como uma mãe para Steven, sempre se preocupando com ele e com o seu futuro, além de ser eficaz com ele quando faz as coisas erradas`;
+                }
+                else if (ametista >= garnet && ametista >= jasper && ametista >= perola && ametista >= greg && ametista >= steven) {
+                    resultadoVar = "Ametista";
+                    texto = `Ametista é alegre e despreocupada. Barulhenta, bagunceira e raramente se importa com as coisas que os outros falam dela, ela acha tudo divertido e quase sempre age por impulso. Ela gosta de fazer brincadeiras e piadas com as Crystal Gems, principalmente Steven e Peridot. Entretanto, mesmo com sua personalidade "relaxada", ela tem um lado protetor e carinhoso, muitas vezes, ametista não mede as consequências de seus atos quando se trata de fazer o certo e lutar pelo que acredita`;
+                }
+                else if (greg >= garnet && greg >= jasper && greg >= perola && greg >= ametista && greg >= steven) {
+                    resultadoVar = "Greg";
+                    texto = `Greg tem uma personalidade amigável e brincalhona, sendo sempre carinhoso e solidário com sua família e seus amigos. Ele ama as coisas simples da vida e gosta de se sentir livre. Mas mesmo se passando por despreocupado, Greg lotou e sacrificou tudo que tinha pelo bem do próximo, muito dos valores de Steven são herdados diretamente de Greg, uma pessoa amável e divertida`;
+                }
+                else if (steven >= garnet && steven >= jasper && steven >= perola && steven >= ametista && steven >= greg) {
+                    resultadoVar = "Steven";
+                    texto = `Steven tem uma personalidade amigável, sendo sempre carinhoso e solidário, apoiando e sempre tentando ajudar ao máximo os outros, um traço apreciado pelos moradores de Beach City. Ele ama aventuras e quer salvar o universo junto com as Crystal Gems, mesmo que ainda não tenha controlado totalmente os poderes de sua pedra, mas ele está sempre disposto a tentar dominá-los. Durante as missões, Steven é bastante agitado e ansioso, tentando sempre encarar o maior problema, mesmo que não consiga vencê-lo realmente`;
+                }
+                else if (garnet >= steven && garnet >= jasper && garnet >= perola && garnet >= ametista && garnet >= greg) {
+                    resultadoVar = "Garnet";
+                    texto = `Garnet é corajosa, valente e confiante. No começo da série, ela demonstrava muita seriedade, sendo de poucas palavras e geralmente não demonstrava expressões alegres ou tristes, Steven disse que Garnet era "misteriosa", fazendo ela rir. ela revelou que achava que a violência resolvia qualquer problema, mas aparentemente ela mudou esse pensamento. Às vezes, ela perde a paciência com algumas coisas, mas mesmo assim Garnet nunca deixa de lutar pelo certo`;
+                }
+                else if (jasper >= garnet && jasper >= perola && jasper >= ametista && jasper >= greg && jasper >= steven) {
+                    resultadoVar = "Jasper";
+                    texto = `Jasper é determinada, regrada e disciplinada. Na grande parte das vezes ela é vista como alguém a ser enfreado pela sua postura rígida, mas, no fundo, Jasper é uma Gem como qualquer outra, lutando pelo que acredita e pelo bem de quem ela acredita que merecesse este bem`;
+                }
+
+            }
+
+            fetch("/quiz/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    idServer: idVar,
+                    idQuiz: 100,
+                    respostaServer: resultadoVar
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    renderizarResultado();
+
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        }
+
+
+
         function renderizarResultado() {
-            box.innerHTML = `
-            <h2>Acertou ${resultado}</h2>
+            for (let index = 0; index < selecionadas.length; index++) {
+            finala.push(valores[selecionadas[index]-1].valor);
+            
+        }
+
+            section3.innerHTML = `<h1> ${resultadoVar}</h1><p><b>Opções Selecionads:</b>${finala}</p>
+            
+            <div class="boxes3" id="boxes3"> 
+                </div>
+                 <button onclick="voltar()" class="button">Voltar</Button>`;
+            boxes3.innerHTML = `
             <div class="divRes">
-                <img src="assets/img/a6361d7827f4ef58ae749ec0940adf91.png">
-                       <h2>Loremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvdLoremnasidhugavsugdhnakdnaihsd asvd</h2>
+                <img class="imgResultado" src="assets/img/${resultadoVar}Resultado.png">
+                       <p> ${texto}</p>
                     </div>`;
+        }
+
+        function voltar(){
+            window.location = "./quiz.html"
         }
     </script>
 </body>

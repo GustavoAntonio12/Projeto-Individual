@@ -36,6 +36,25 @@ function listarPostagensUsuario(req, res) {
             }
         );
 }
+function listarQuantidadePostagensAgrupadoDia(req, res) {
+    var id = req.params.idServer;
+    postagensModel.listarQuantidadePostagensAgrupadoDia(id)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+                res.send(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function deletar(req, res) {
     var id = req.params.idServer;
     postagensModel.deletar(id)
@@ -99,6 +118,7 @@ function cadastrar(req, res) {
 module.exports = {
     listarPostagens,
     listarPostagensUsuario,
+    listarQuantidadePostagensAgrupadoDia,
     cadastrar,
     deletar,
    // alterar
