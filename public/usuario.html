@@ -60,8 +60,8 @@
                     <span id="posts"></span>
                 </div>
                 <div class="indicadores">
-                    <i class="fa-solid fa-star fa-my fa-xl"></i>
-                    <h3> Post's Com Estrelas</h3>
+                    <i class="fa-solid fa-calendar fa-my fa-xl"></i>
+                    <h3>Último Post</h3>
                     </h3>
                     <span id="estrelas"></span>
                 </div>
@@ -82,8 +82,8 @@
                     <h2>Acertos Por Teste De Conhecimento</h2>
                     <canvas id="myChart2"></canvas>
                 </div>
-                
-                  
+
+
             </div>
             <div class="post2" id="post">
                 <h2>Seus Post's</h2>
@@ -96,14 +96,7 @@
 
     </main>
     <footer>
-        <ul class="footer">
-            <li><a>Home</a></li>
-            <li><a>Quiz</a></li>
-            <li><a>Login</a></li>
-            <li><a>Usuario</a></li>
-            <li><a>Sobre</a></li>
-        </ul>
-
+        <h4>Desenvolvido Por Gustavo Antonio©℗®™</h4>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
@@ -113,7 +106,7 @@
     nome.innerHTML = session.nomeUsuario;
     email.innerHTML = session.emailUsuario;
     telefone.innerHTML = session.telefoneUsuario
-    estrelas.innerHTML = "2";
+    estrelas.innerHTML = "Sem Post";
     persona.innerHTML = "Sem Teste";
     posts.innerHTML = 0;
 
@@ -133,10 +126,11 @@
                     console.log(json);
                     postagens = json;
                     if (postagens.length > 0) {
-                        
+
                         posts.innerHTML = postagens.length;
+                        estrelas.innerHTML = new Date(postagens[postagens.length-1].dataPostagens).toLocaleDateString();
                         for (let index = 0; index < postagens.length; index++) {
-                        
+
                             var postagem = postagens[index];
                             renderizarPostagem(postagem);
                         }
@@ -191,89 +185,91 @@
     }
 
 
-    function alterar() {
-        alert("alterar");
+    function alterar(index) {
+        window.location = `./alterarPost.html?idPostagem=${index}`;
     }
+
+
 
 
 </script>
 
 <script>
 
-function listarQuantidadePostagensAgrupadoDia(idUsuario) {
+    function listarQuantidadePostagensAgrupadoDia(idUsuario) {
 
-fetch(`/postagens/listarQuantidadePostagensAgrupadoDia/${id}`, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    }
-}).then(function (resposta) {
-    console.log('Resposta: ', resposta);
+        fetch(`/postagens/listarQuantidadePostagensAgrupadoDia/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log('Resposta: ', resposta);
 
-    if (resposta.ok) {
-        resposta.json().then(json => {
-            console.log(json);
-            postagens = json;
-            if (postagens.length > 0) {
-                plotarGrafico(postagens);
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    postagens = json;
+                    if (postagens.length > 0) {
+                        plotarGrafico(postagens);
+                    }
+                });
+
             }
         });
-
     }
-});
-}
 
-function listarAcertosAgrupadoDia(idUsuario) {
+    function listarAcertosAgrupadoDia(idUsuario) {
 
-fetch(`/quiz/listarAcertosAgrupadoDia/${id}`, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    }
-}).then(function (resposta) {
-    console.log('Resposta: ', resposta);
+        fetch(`/quiz/listarAcertosAgrupadoDia/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log('Resposta: ', resposta);
 
-    if (resposta.ok) {
-        resposta.json().then(json => {
-            console.log(json);
-            if (json.length > 0) {
-                plotarGrafico2(json);
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    if (json.length > 0) {
+                        plotarGrafico2(json);
+                    }
+                });
+
             }
         });
-
     }
-});
-}
 
-function personaTeste(idUsuario) {
+    function personaTeste(idUsuario) {
 
-fetch(`/quiz/personaTeste/${id}`, {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json"
-    }
-}).then(function (resposta) {
-    console.log('Resposta: ', resposta);
+        fetch(`/quiz/personaTeste/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log('Resposta: ', resposta);
 
-    if (resposta.ok) {
-        resposta.json().then(json => {
+            if (resposta.ok) {
+                resposta.json().then(json => {
 
-            console.log(json);
-            if (json.length > 0) {
-               persona.innerHTML = json[0].persona;
-               data.innerHTML =  new Date(json[0].data).toLocaleDateString();
+                    console.log(json);
+                    if (json.length > 0) {
+                        persona.innerHTML = json[0].persona;
+                        data.innerHTML = new Date(json[0].data).toLocaleDateString();
+                    }
+                });
+
             }
         });
-
     }
-});
-}
 
 
-function plotarGrafico(resposta) {
+    function plotarGrafico(resposta) {
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
-        
+
         // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
@@ -282,18 +278,18 @@ function plotarGrafico(resposta) {
                 data: [],
                 fill: false,
                 borderColor: '#75FBE2',
-                backgroundColor:  '#75FBE2',
+                backgroundColor: '#75FBE2',
                 tension: 0.1
             }]
         };
-        
+
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(new Date(registro.data).toLocaleDateString());
             dados.datasets[0].data.push(registro.quantidade);
         }
-        
+
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
@@ -310,7 +306,7 @@ function plotarGrafico(resposta) {
     function plotarGrafico2(resposta) {
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
-        
+
         // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
@@ -319,18 +315,18 @@ function plotarGrafico(resposta) {
                 data: [],
                 fill: false,
                 borderColor: '#FB5B68',
-                backgroundColor:  '#FB5B68',
+                backgroundColor: '#FB5B68',
                 tension: 0.1
             }]
         };
-        
+
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(new Date(registro.data).toLocaleTimeString());
             dados.datasets[0].data.push(registro.quantidade);
         }
-        
+
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'line',
@@ -344,11 +340,11 @@ function plotarGrafico(resposta) {
         );
     }
 
-    function iniciar(id){
-        validarSessao(); 
-        listarPostagensUsuario(id); 
-        listarAcertosAgrupadoDia(id); 
-        listarQuantidadePostagensAgrupadoDia(id); 
+    function iniciar(id) {
+        validarSessao();
+        listarPostagensUsuario(id);
+        listarAcertosAgrupadoDia(id);
+        listarQuantidadePostagensAgrupadoDia(id);
         personaTeste(id);
     }
 

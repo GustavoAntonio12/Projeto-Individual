@@ -20,8 +20,18 @@ router.get("/listarQuantidadePostagensAgrupadoDia/:idServer", function (req, res
     postagensController.listarQuantidadePostagensAgrupadoDia(req, res);
 });
 
+router.get("/postagemAtualizar/:idServer&:id2Server", function (req, res) {
+    postagensController.postagemAtualizar(req, res);
+});
+
+
 
 router.post("/cadastrar", function (req, res) {
     postagensController.cadastrar(req, res);
 });
+
+router.post("/alterar", function (req, res) {
+    postagensController.alterar(req, res);
+});
+
 module.exports = router;

@@ -46,17 +46,17 @@
             <h2>Por que ser uma Crystal Gems ?</h2>
             <div class="boxes">
                 <div class="box">
-                    <h2>Força</h2>
+                    <h2>Resiliência</h2>
                     <img src="assets/img/garnet.png">
                     <p>As chances são poucas, não será fácil, mas unidas iremos estar! A verdadeira força é lutar por aquilo que se acredita independentemente do pensamento alheio, acender uma chama no proxímo, é assim que se é forte, de verdade.</p>
                 </div>
                 <div class="box">
-                    <h2>Esperança</h2>
+                    <h2>Otimismo</h2>
                     <img src="assets/img/lapis.png">
                     <p>Ter esperança não é sobre esperar um milagre, mas sim lutar para ele acontecer. Por isso que mesmo parecendo um impossível, uma Crystam Gem continua lutando. Afinal, que teria mais valor do que paz na Terra e muito amor?</p>
                 </div>
                 <div class="box">
-                    <h2>Amor</h2>
+                    <h2>Amor/Empatia</h2>
                     <img src="assets/img/ruby.png">
                     <p>Quando você ama a si mesmo, você nunca vai estar sozinho, não importa o que aconteça, pois, ninguém pode deter um sentimento estável, e toda Crystal Gems é feita de amor, e isto é mais forte que qualquer coisa.
                     </p>
@@ -84,18 +84,11 @@
                 <p><i><b>O primeiro passo é deixar todos serem que são, talvez assim, você possa se permitir ser quem você realmente é</b></i><br><br> Muitas pessoas acreditam não se conhecer, e isto não é um problema, neste site você pode fazer testes e receber dicas para se auto conhecer, tudo isso em conjunto com <i>Steven Universe.</i> Tenha a experiência de se auto descobrir enquanto entra em contato com a comunidade de umas das melhores obras artísticas de todos os tempos.</p>
                    
             </div>
-            <button class="button">Amor</button>
+            <button class="button" onclick="quiz()">Vamos Lá</button>
         </div>
     </main>
     <footer>
-        <ul class="footer">
-            <li><a>Home</a></li>
-            <li><a>Quiz</a></li>
-            <li><a>Login</a></li>
-            <li><a>usuario</a></li>
-            <li><a>Sobre</a></li>
-        </ul>
-
+        <h4>Desenvolvido Por Gustavo Antonio©℗®™</h4>
     </footer>
     <script src="assets/js/main.js"></script>
 </body>
@@ -110,5 +103,14 @@
                 <li><a href="quiz.html">Quiz</a></li>
                 <li><a href="postagens.html">Postagens</a></li>
                 <li><a href="usuario.html">Minha Área</a></li>`;   
+    }
+    function quiz(){
+        if(!session){
+            window.location = "./login.html";
+        }
+        else{
+            window.location = "./quiz.html";
+
+        }
     }
 </script>

@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/2eecc47c4e.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/start.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="assets/js/funcoes.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Koulen&family=Poppins:wght@100&family=Roboto+Flex:opsz@8..144&display=swap"
         rel="stylesheet">
     <title>Home</title>
 </head>
 
-<body>
+<body onload="validarSessao(); carregar();">
     <header>
         <nav>
             <div class="logo">
@@ -27,8 +27,9 @@
             <ul class="nav-links" id="menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="login.html"  class="ativo">Login</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="postagens.html" class="ativo">Postagens</a></li>
+                <li><a href="usuario.html">Minha Área</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
@@ -37,8 +38,7 @@
             </div>
         </nav>
     </header>
-
-
+   
     <main>
         <div class="section1">
             <h1>But I want you to know you could know me</h1>
@@ -51,52 +51,61 @@
             <div class="parteC">
                 <div class="form">
                     <h2>Posso Te Mostrar Como Ser Forte De Verdade</h2>
-                    <h3>Login</h3>
-                    <p>E-mail</p>
-                    <input placeholder="exemplo@gmail.com" id="email" type="email">
-                    <p>Senha</p>
-                    <input placeholder="********" id="senha" type="password">
-                    <p>Não tem Conta <a href="cadastro.html" > Cadastre-se </a></p>
-                    <button type="submit" onclick="entrar()" class="button">Entrar</button>
+                    <h3>Alterar Postagem</h3>
+
+                    <p>Título da Postagens</p>
+                    <input placeholder="Título" id="titulo" type=" text">
+                    <p>Postagem:</p>
+                    <textarea id="postagem" rows="20" class="textoArea"></textarea>
+
+                    <button type="submit" onclick="alterar()" class="button">Publicar</button>
 
                 </div>
 
             </div>
-
-
         </div>
     </main>
-
     <footer>
         <h4>Desenvolvido Por Gustavo Antonio©℗®™</h4>
     </footer>
-
+    <script src="assets/js/main.js"></script>
 
 </body>
-
-</html>
-
 <script>
     var session = obterDadosSession();
-   if (session) {
-   console.log("Deu Bom");
-   menu.innerHTML = ` <li><a href="index.html">Home</a></li>
-           <li><a href="sobre.html">Sobre</a></li>
-           <li><a href="quiz.html">Quiz</a></li>
-           <li><a href="cadastro.html">Cadastro</a></li>
-           <li><a href="usuario.html"class="ativo">Minha Área</a></li>`;
-}
+    id = session.idUsuario;
+    const url = new URLSearchParams(window.location.search); 
+    var teste = url.get("idPostagem");
+
+    function carregar(){
+        fetch(`/postagens/postagemAtualizar/${id}&${teste}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log('Resposta: ', resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    titulo.value = json[0].titulo;
+                    postagem.value = json[0].texto;
+
+                });
+
+            }
+        });
+    }
     
+    function alterar() {
+        var idUsuario = session.idUsuario;
+        var tituloVar = titulo.value;
+        var postagemVar = postagem.value;
 
-
-    function entrar() {
-
-        var emailVar = email.value;
-        var senhaVar = senha.value;
-
-        if (emailVar == "" || senhaVar == "") {
+        if ( tituloVar == "" || postagemVar == "") {
             Swal.fire({
-                title: 'Erro Ao Tentar Cadastrar',
+                title: 'Erro Ao Tentar Publicar',
                 text: 'Todos os campos devem ser preenchidos',
                 icon: 'error',
                 timer: 2000,
@@ -107,44 +116,36 @@
         }
         else {
 
-            fetch("/usuarios/autenticar", {
+            fetch("/postagens/alterar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    emailServer: emailVar,
-                    senhaServer: senhaVar
+                    idServer: idUsuario,
+                    id2Server: teste,
+                    tituloServer: tituloVar,
+                    textoServer:  postagemVar
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
 
                 if (resposta.ok) {
                     console.log(resposta);
-
-                    resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
-                        sessionStorage.USUARIO = JSON.stringify(json);
-                        sessionStorage.EMAIL_USUARIO = json.emailUsuario;
-                        sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                        sessionStorage.ID_USUARIO = json.idUsuario;
                         Swal.fire({
                             title: 'Sucesso',
-                            text: 'Login Realizado Com Sucesso',
+                            text: 'Publicado Com Sucesso',
                             icon: 'success',
                             timer: 2000,
                             timerProgressBar: true,
                             confirmButtonText: 'Fechar',
                             willClose: () => {
-                                window.location = "./index.html";
+                                window.location = "./postagens.html";
                             }
                         });
-                    });
-
                 } else {
                     Swal.fire({
-                        title: 'Erro ao tentar realizar o login!',
+                        title: 'Erro ao tentar publicar',
                         text: 'Entre em contato com nossa central de atendimentos se o problema persistir',
                         icon: 'error',
                         timer: 2000,
@@ -154,6 +155,7 @@
                     return false;
                     resposta.text().then(texto => {
                         console.error(texto);
+                        
                     });
                 }
 
@@ -166,3 +168,4 @@
     }
 
 </script>
+</html>

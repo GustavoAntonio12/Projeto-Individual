@@ -28,6 +28,21 @@ function listarQuantidadePostagensAgrupadoDia(idUsuario) {
     return database.executar(instrucao);
 }
 
+function  postagemAtualizar(idUsuario,idPostagens) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listarQuantidadePostagensAgrupadoDia()",);
+    var instrucao = ` SELECT tituloPostagens as 'titulo', textoPostagens as 'texto' FROM postagens WHERE fkUsuario = ${idUsuario} AND idPostagens = ${idPostagens};`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function alterar(idUsuario,idPostagem,titulo,texto) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar()", idPostagem);
+    var instrucao = `
+    UPDATE postagens SET tituloPostagens = '${titulo}', textoPostagens = '${texto}' WHERE fkUsuario = ${idUsuario} AND idPostagens = ${idPostagem};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 
@@ -50,10 +65,14 @@ function cadastrar(idUsuario,titulo,postagem) {
 }
 
 
+
+
 module.exports = {
     listarPostagens,
     deletar,
     cadastrar,
     listarPostagensUsuario,
-    listarQuantidadePostagensAgrupadoDia
+    listarQuantidadePostagensAgrupadoDia,
+    alterar,
+    postagemAtualizar
 }

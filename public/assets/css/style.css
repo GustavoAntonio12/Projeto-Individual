@@ -81,8 +81,12 @@ nav {
     color: #FB5B68;
     cursor: pointer;
 }
+.votado{
+    color:#FFEB48;
+}
 
-.fa-star.fa-my {
+
+.fa-calendar.fa-my {
     box-sizing: border-box;
     color: #FFEB48;
     margin: 20px;
@@ -405,6 +409,9 @@ h1 {
     cursor: pointer;
 }
 
+.button2{
+    text-align: center;
+}
 .button:hover {
     font-size: 24px;
     transition: 0.5s;

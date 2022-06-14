@@ -51,18 +51,13 @@
 
 
                 </div>
+                
             </div>
+            <button onclick="voltar()" class="button" id="but" style="display:none">Voltar</Button>`
         </div>
     </main>
     <footer>
-        <ul class="footer">
-            <li><a>Home</a></li>
-            <li><a>Quiz</a></li>
-            <li><a>Login</a></li>
-            <li><a>usuario</a></li>
-            <li><a>Sobre</a></li>
-        </ul>
-
+        <h4>Desenvolvido Por Gustavo Antonio©℗®™</h4>
     </footer>
     <script src="assets/js/main.js"></script>
     <script>
@@ -127,7 +122,8 @@
             <div class="divRes">
                 <img src="assets/img/a6361d7827f4ef58ae749ec0940adf91.png">
                        <p>${texto}</p>
-                    </div><button onclick="voltar()" class="button">Voltar</Button>`;
+                    </div>`;
+                    but.style.display="flex";
                     
         }
         function voltar(){

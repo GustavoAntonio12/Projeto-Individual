@@ -73,10 +73,33 @@ function deletar(req, res) {
             }
         );
 }
-// TODO: Fazer a feature de alterar o post (se dé tempo, mas vai da sim, numa boa)
 function alterar(req, res) {
+    var id = req.body.idServer;
+    var id2 = req.body.id2Server;
+    var texto = req.body.textoServer;
+    var titulo = req.body.tituloServer;
+
+    postagensModel.alterar(id,id2,titulo,texto)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+                res.send(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function postagemAtualizar(req, res) {
     var id = req.params.idServer;
-    postagensModel.deletar(id)
+    var id2 = req.params.id2Server;
+    postagensModel.postagemAtualizar(id,id2)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
@@ -121,5 +144,6 @@ module.exports = {
     listarQuantidadePostagensAgrupadoDia,
     cadastrar,
     deletar,
-   // alterar
+   alterar,
+   postagemAtualizar,
 }
