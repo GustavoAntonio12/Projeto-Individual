@@ -1,7 +1,7 @@
 const perguntas = [
     {
         "id": "1",
-        "pergunta": "No Episódio 70, Quando as Crystal Gems derrotaram Peridot, eles jogaram fora oque que era dela?",
+        "pergunta": "No Episódio 70, Quando as Crystal Gems derrotaram Peridot, eles jogaram fora o que dela?",
         "resposta1": "As Calças",
         "resposta2": "Os Robonoides",
         "resposta3": "Os Óculos",
@@ -28,7 +28,7 @@ const perguntas = [
     },
     {
         "id": "4",
-        "pergunta": "No episódio 82, Peridot para conseguir se reconciliar com Lapis, da oque de presente à ela?",
+        "pergunta": "No episódio 82, Peridot para conseguir se reconciliar com Lapis, o que ela da de presente para ela?",
         "resposta1": "Um Tablet",
         "resposta2": "Um Celeiro",
         "resposta3": "Um Shorts",
@@ -142,7 +142,7 @@ const valores = [
     }, 
     {
         "id": "16",
-        "valor":"Criatividada",
+        "valor":"Criatividade",
         "persona":"Greg"
     }, 
     {
