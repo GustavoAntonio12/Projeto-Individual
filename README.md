@@ -24,11 +24,6 @@ Tecnologias utilizadas no projeto:
 ![App Screenshot](https://i.imgur.com/gUvCqGX.png)
 
 
-## Aprendizados
-
-O que você aprendeu construindo esse projeto? Quais desafios você enfrentou e como você superou-os?
-
-
 ## Feedback
 
 Se você tiver algum feedback, por favor nos deixe saber por meio de gustavo.antonio@sptech.school
